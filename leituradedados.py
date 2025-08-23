@@ -319,6 +319,149 @@ df
 
 
 
+Numpy
+
+O básico de Numpy
+
+#criando um vetor
+a = np.array([1, 2, 3, 4, 5, 6])
+a
+
+
+#criando uma matriz
+b = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 12, 11]])
+b
+
+
+
+np.zeros(10) #é um vetor de zeros
+
+
+
+np.ones(10) #é um array de uns
+
+
+
+np.arange(4) #intervalo começando no zero
+
+
+
+np.arange(2, 9, 2) #de 2 até 9, de 2 em 2
+
+
+
+
+np.linspace(0, 20, num=5) #dados espaçados linearmente, de 0 a 20 de 5 em 5
+
+
+
+np.sort(a) #classificando em ordem crescente
+
+
+
+np.sort(b) #classificando em ordem crescente
+
+
+
+#juntar dois vetores
+z = np.array([1, 2, 3, 4])
+w = np.array([4, 6, 7, 8])
+np.concatenate((a, b)) #juntando (concatenando)
+
+
+
+
+#Vetores, Norma e Direção:
+
+
+
+# Definindo vetores
+v1 = np.array([3, 4])
+v2 = np.array([4, 3])
+
+# Calculando a norma (magnitude)
+norm_v1 = np.linalg.norm(v1)
+norm_v2 = np.linalg.norm(v2)
+
+print(f"Norma de v1: {norm_v1:.2f}")
+print(f"Norma de v2: {norm_v2:.2f}")
+
+# Direção = vetor unitário
+u1 = v1 / norm_v1
+u2 = v2 / norm_v2
+
+print(f"Direção de v1 (unitário): {u1}")
+print(f"Direção de v2 (unitário): {u2}")
+
+
+
+
+#Multiplicação Escalar e Sentido:
+
+
+
+# Multiplicando por um escalar positivo
+v3 = 2 * v1
+print(f"2 * v1 = {v3}")
+
+# Multiplicando por um escalar negativo (muda o sentido)
+v4 = -2 * v1
+print(f"-2 * v1 = {v4}")
+
+
+
+
+#Matrizes e Multiplicação de Matrizes:
+
+
+
+
+# Criando matrizes A (1x2) e B (2x1)
+A = np.array([[1, 2]])
+B = np.array([[3], [4]])
+
+# Verifica as formas
+print("Forma de A:", A.shape)
+print("Forma de B:", B.shape)
+
+# Multiplicação de Matrizes
+C = np.dot(A, B)
+print("A * B =", C)
+
+
+
+
+#Transposição de Matrizes
+
+
+# Transpondo uma matriz
+A_T = A.T
+print("Matriz A transposta:\n", A_T)
+
+
+
+
+#Inversão de Matrizes e Matriz Identidade:
+
+
+from numpy.linalg import inv, det
+
+# Matriz 2x2
+M = np.array([[4, 7], [2, 6]])
+
+# Verificando se é invertível
+det_M = det(M)
+print("Determinante de M:", det_M)
+
+if det_M != 0:
+    M_inv = inv(M)
+    print("Matriz inversa de M:\n", M_inv)
+
+    # Verificando a multiplicação com a inversa = identidade
+    identidade = np.dot(M, M_inv)
+    print("M * M_inv (deve ser identidade):\n", identidade)
+else:
+    print("Matriz não invertível.")
 
 
 
