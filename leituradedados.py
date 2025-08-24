@@ -96,11 +96,6 @@ plt.hist(df.y)
 
 
 
-
-
-Distribui??o de problemas card?acos:
-
-
 # Import uniform from random module instead of sympy
 from random import uniform
 import numpy as np
@@ -112,91 +107,89 @@ n = 100  # Assuming n=100, adjust as needed
 # Generate height data
 alt = np.random.normal(1.75, 0.30, n).tolist()
 
-# c?lculo do peso
+# cálculo do peso
 peso = []
 for i in alt:
-  a = round(float(uniform(-5, 5)), 2)  # varia??o aleat?ria
-  b = 50 * i
-  c = a + b
-  peso.append(c)
+    a = round(float(uniform(-5, 5)), 2)  # variação aleatória
+    b = 50 * i
+    c = a + b
+    peso.append(c)
 
-# c?lculo do IMC
+# cálculo do IMC
 IMC = []
 for i, j in zip(peso, alt):
-  e = i / (j**2)
-  e = round(e, 2)
-  IMC.append(e)
+    e = i / (j**2)
+    e = round(e, 2)
+    IMC.append(e)
 
-# gera??o de SEXO
+# geração de SEXO
 SEXO = []
 for i in range(n):
-  value = np.random.uniform(0, 1)
-  if value > 0.5:
-      SEXO.append('M')
-  else:
-      SEXO.append('F')
+    value = np.random.uniform(0, 1)
+    if value > 0.5:
+        SEXO.append('M')
+    else:
+        SEXO.append('F')
 
-# classifica??o card?aca
+# classificação cardíaca
 CARDIACO = []
 for i in range(n):
-  if IMC[i] > 40:
-      CARDIACO.append('S')  # Sim, problema
-  elif 30 < IMC[i] <= 40:
-      CARDIACO.append('P')  # Propens?o
-  else:
-      CARDIACO.append('N')  # Normal
+    if IMC[i] > 40:
+        CARDIACO.append('S')  # Sim, problema
+    elif 30 < IMC[i] <= 40:
+        CARDIACO.append('P')  # Propensão
+    else:
+        CARDIACO.append('N')  # Normal
 
-# cria??o do dataframe
+# criação do dataframe
 df = pd.DataFrame({
-  'Altura': alt,
-  'Peso': peso,
-  'IMC': IMC,
-  'SEXO': SEXO,
-  'CARDIACO': CARDIACO
+    'Altura': alt,
+    'Peso': peso,
+    'IMC': IMC,
+    'SEXO': SEXO,
+    'CARDIACO': CARDIACO
 })
 
 df.to_csv('df.csv', index=False)
 
-# fun??o m?dia
+# função média
 def media(tabela):
-  soma = sum(tabela)
-  media = soma / len(tabela)
-  media = round(media, 2)
-  print(media)
+    soma = sum(tabela)
+    media = soma / len(tabela)
+    media = round(media, 2)
+    print(media)
 
-print("M?dia IMC:")
+print("Média IMC:")
 media(df.IMC)
 
-print("M?dia Peso:")
+print("Média Peso:")
 media(df.Peso)
 
-print("M?dia Altura:")
+print("Média Altura:")
 media(df.Altura)
 
-# distribui??o de sexo
+# distribuição de sexo
 freq_m = (df.SEXO == 'M').sum()
 freq_f = (df.SEXO == 'F').sum()
-print("O percentual de homens ?:", round((freq_m/n*100), 2))
-print("O percentual de mulheres ?:", round((freq_f/n*100), 2))
+print("O percentual de homens é:", round((freq_m/n*100), 2))
+print("O percentual de mulheres é:", round((freq_f/n*100), 2))
 
-# distribui??o card?aca
+# distribuição cardíaca
 freq_s = (df.CARDIACO == 'S').sum()
 freq_p = (df.CARDIACO == 'P').sum()
 freq_n = (df.CARDIACO == 'N').sum()
-print("O percentual de pessoas com problemas card?acos ?:", round((freq_s/n*100), 2))
-print("O percentual de pessoas com tend?ncias a problemas card?acos ?:", round((freq_p/n*100), 2))
-print("O percentual de pessoas sem tend?ncia a problemas card?acos ?:", round((freq_n/n*100), 2))
+print("O percentual de pessoas com problemas cardíacos é:", round((freq_s/n*100), 2))
+print("O percentual de pessoas com tendências a problemas cardíacos é:", round((freq_p/n*100), 2))
+print("O percentual de pessoas sem tendência a problemas cardíacos é:", round((freq_n/n*100), 2))
 
-# gr?fico para visualizar
+# gráfico para visualizar
 import matplotlib.pyplot as plt
 
 df['CARDIACO'].value_counts().plot(kind='bar')
-plt.title("Distribui??o de Problemas Card?acos")
+plt.title("Distribuição de Problemas Cardíacos")
 plt.xlabel("Categoria")
-plt.ylabel("Frequ?ncia")
+plt.ylabel("Frequência")
 plt.show()
-
-
 
 
 
@@ -319,11 +312,13 @@ df
 
 
 
+
 Numpy
 
-O básico de Numpy
+O b?sico de Numpy
 
 #criando um vetor
+
 import numpy as np
 
 a = np.array([1, 2, 3, 4, 5, 6])
@@ -335,30 +330,22 @@ b = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 12, 11]])
 b
 
 
-
-np.zeros(10) #é um vetor de zeros
-
+np.zeros(10) #? um vetor de zeros
 
 
-np.ones(10) #é um array de uns
+np.ones(10) #? um array de uns
 
 
-
-np.arange(4) #intervalo começando no zero
-
+np.arange(4) #intervalo come?ando no zero
 
 
-np.arange(2, 9, 2) #de 2 até 9, de 2 em 2
+np.arange(2, 9, 2) #de 2 at? 9, de 2 em 2
 
 
-
-
-np.linspace(0, 20, num=5) #dados espaçados linearmente, de 0 a 20 de 5 em 5
-
+np.linspace(0, 20, num=5) #dados espa?ados linearmente, de 0 a 20 de 5 em 5
 
 
 np.sort(a) #classificando em ordem crescente
-
 
 
 np.sort(b) #classificando em ordem crescente
@@ -368,12 +355,12 @@ np.sort(b) #classificando em ordem crescente
 #juntar dois vetores
 z = np.array([1, 2, 3, 4])
 w = np.array([4, 6, 7, 8])
-np.concatenate((a, b)) #juntando (concatenando)
+np.concatenate((z, w)) #juntando (concatenando)
 
 
 
 
-#Vetores, Norma e Direção:
+#Vetores, Norma e Dire??o:
 
 
 
@@ -388,17 +375,17 @@ norm_v2 = np.linalg.norm(v2)
 print(f"Norma de v1: {norm_v1:.2f}")
 print(f"Norma de v2: {norm_v2:.2f}")
 
-# Direção = vetor unitário
+# Dire??o = vetor unit?rio
 u1 = v1 / norm_v1
 u2 = v2 / norm_v2
 
-print(f"Direção de v1 (unitário): {u1}")
-print(f"Direção de v2 (unitário): {u2}")
+print(f"Dire??o de v1 (unit?rio): {u1}")
+print(f"Dire??o de v2 (unit?rio): {u2}")
 
 
 
 
-#Multiplicação Escalar e Sentido:
+#Multiplica??o Escalar e Sentido:
 
 
 
@@ -413,7 +400,7 @@ print(f"-2 * v1 = {v4}")
 
 
 
-#Matrizes e Multiplicação de Matrizes:
+#Matrizes e Multiplica??o de Matrizes:
 
 
 
@@ -426,14 +413,14 @@ B = np.array([[3], [4]])
 print("Forma de A:", A.shape)
 print("Forma de B:", B.shape)
 
-# Multiplicação de Matrizes
+# Multiplica??o de Matrizes
 C = np.dot(A, B)
 print("A * B =", C)
 
 
 
 
-#Transposição de Matrizes
+#Transposi??o de Matrizes
 
 
 # Transpondo uma matriz
@@ -443,7 +430,7 @@ print("Matriz A transposta:\n", A_T)
 
 
 
-#Inversão de Matrizes e Matriz Identidade:
+#Invers?o de Matrizes e Matriz Identidade:
 
 
 from numpy.linalg import inv, det
@@ -451,19 +438,19 @@ from numpy.linalg import inv, det
 # Matriz 2x2
 M = np.array([[4, 7], [2, 6]])
 
-# Verificando se é invertível
+# Verificando se ? invert?vel
 det_M = det(M)
 print("Determinante de M:", det_M)
 
 if det_M != 0:
-    M_inv = inv(M)
-    print("Matriz inversa de M:\n", M_inv)
+    M_inv = inv(M)
+    print("Matriz inversa de M:\n", M_inv)
 
-    # Verificando a multiplicação com a inversa = identidade
-    identidade = np.dot(M, M_inv)
-    print("M * M_inv (deve ser identidade):\n", identidade)
+    # Verificando a multiplica??o com a inversa = identidade
+    identidade = np.dot(M, M_inv)
+    print("M * M_inv (deve ser identidade):\n", identidade)
 else:
-    print("Matriz não invertível.")
+    print("Matriz n?o invert?vel.")
 
 
 
